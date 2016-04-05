@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>rotate</title>
+	<style>
+	* {
+		padding: 0;
+		margin: 0;
+	}
+	li {
+		list-style: none;
+	}
+	.images {
+		margin: 0 auto;
+		position: relative;
+		width: 800px;
+		height: 400px;
+		overflow: hidden;
+	}
+	.images > li {
+		position: absolute;
+		width: 800px;
+		height: 400px;
+	}
+	img {
+		width: 800px;
+		height: 400px;
+	}
+	.none {
+		z-index: -1;
+	}
+	.showright {
+		animation: toright 0.5s;
+		z-index: 2;
+	}
+	@keyframes toright {
+		from { left: 800px; }
+		to { left: 0; }
+	}
+	.showleft {
+		animation: toleft 0.5s;
+		z-index: 2;
+	}
+	@keyframes toleft {
+		from { left: -800px; }
+		to { left: 0; }
+	}
+	.show {
+		z-index: 1;
+	}
+	.index {
+		/*margin: 0 auto;*/
+		position: absolute;
+		top: 360px;
+		left: 0;
+		right: 0;
+		margin: auto;
+		width: 250px;
+		height: 20px;
+		cursor: pointer;
+		z-index: 3;
+	}
+	.index li {
+		float: left;
+		margin: 0 15px;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background: #B3B3B9;
+		transition: all 1s;
+		text-align: center;
+	}
+	.index > .first {
+		background-color: #22A9FF;
+	}
+
+	.hand {
+		display: none;
+		position: absolute;
+		top: 40%;
+		width: 70px;
+		height: 70px;
+		background: url(./images/hand.png) no-repeat;
+		z-index: 3;
+		border-radius: 50%;
+	}
+	.lefthand {
+		
+	}
+	.righthand {
+		right: 0;
+		background-position: 0 -70px;
+	}
+	</style>
+</head>
+<body>
+
+<ul class="images">
+	<div class="lefthand hand"></div>
+	<div class="righthand hand"></div>
+	<li class="showright"><img src="images/1.jpg"></li>
+	<li class="none"><img src="images/2.jpg"></li>
+	<li class="none"><img src="images/3.jpg"></li>
+	<li class="none"><img src="images/4.jpg"></li>
+	<li class="none"><img src="images/5.jpg"></li>
+</ul>
+<ul class="index">
+	<li class="first">1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+</ul>
+
+<script>
+
+	var lis = document.querySelectorAll('.images li'); //图片中的 li
+	var imgCon = document.querySelector('.images'); //图片 ul
+	var indexs = document.querySelectorAll('.index li'); // 下面的 li
+	var index = document.querySelector('.index'); // 下面的 ul
+	var leftBtn = document.querySelector('.lefthand'); // 
+	var rightBtn = document.querySelector('.righthand'); // 
+	var lisLen = lis.length, indexsLen = indexs.length, indexArr = [];
+	var nextIndex = 0, preIndex = 0;
+	//把 images 的类数组对象转化为数组
+	(function () {
+		for (var i = 0; i < indexsLen; i ++) {
+			indexArr[i] = indexs[i];
+		}
+	})();
+	//根据光标获得 index.
+	index.addEventListener('click', function (ev) {
+		var target = ev.target;	
+		//获得 index.
+		if (target.tagName.toUpperCase() == 'LI') {
+				// 获得前一个的 index.
+			for(var i = 0; i < lisLen; i ++) {
+				if (lis[i].className == 'showleft' || lis[i].className == 'showright') {
+					preIndex = i;
+				}
+			};
+				// 获得后一个的 index.
+			nextIndex = indexArr.indexOf(target);
+
+			if (lis[nextIndex].className != 'showleft' && lis[nextIndex].className != 'showright') {
+				setImgIndex(preIndex, nextIndex);
+			}
+		}
+	});
+	//重新设置lis 的 className 和 光标的 背景 
+	function reset () {
+		for (var i = 0; i < lisLen; i ++) {
+			lis[i].className = 'none';
+		}
+		for (var j = 0; j < indexsLen; j ++) {
+			indexs[j].style.background = '#B3B3B9';
+		}
+	};
+	//设置下面光标轮播   获得当前的 index. 并判断前后大小
+	function setImgIndex(preIndex, nextIndex) {
+		reset();
+
+		if (preIndex > nextIndex) {
+			lis[nextIndex].className = 'showleft';
+		} else if (preIndex < nextIndex) {
+			lis[nextIndex].className = 'showright';
+		}
+
+		indexs[nextIndex].style.background = 'blue';
+		lis[preIndex].className = 'show';
+	}
+	//设置自动轮播
+	var setIntFun = setInterval(setInt, 2000);
+	function setInt() {
+		reset();
+		nextIndex ++;
+		preIndex = nextIndex - 1;
+		if (nextIndex == lisLen) {
+			nextIndex = 0;
+		}
+		if (preIndex == lisLen) {
+			preIndex = 0;
+		}
+		indexs[nextIndex].style.background = 'blue';
+		lis[nextIndex].className = 'showright';
+		lis[preIndex].className = 'show';
+		preIndex ++;
+	};
+	// 添加 hover 显示左右 button 和 重设置自动轮播
+	function showBtn () {
+		leftBtn.style.display = 'block';
+		rightBtn.style.display = 'block';
+	}
+	function hideBtn () {
+		leftBtn.style.display = 'none';
+		rightBtn.style.display = 'none';
+	}
+	index.addEventListener('mouseover', function () {
+		showBtn();
+		clearInterval(setIntFun);
+	});
+	index.addEventListener('mouseout', function () {
+		hideBtn();
+		setIntFun = setInterval(setInt, 2000);
+	});
+	imgCon.addEventListener('mouseover', function () {
+		showBtn();
+		clearInterval(setIntFun);
+	});
+	imgCon.addEventListener('mouseout', function () {
+		hideBtn();
+		setIntFun = setInterval(setInt, 2000);
+	});
+
+	//给两边添加事件
+	leftBtn.addEventListener('click', function () {
+		reset();
+		if (nextIndex == 0) {
+			nextIndex = lisLen;
+		}
+		nextIndex --;
+		preIndex = nextIndex + 1;
+		//如果后一张为最后一张  前一张为0
+		if (nextIndex == lisLen - 1) {
+			preIndex = 0;
+		}
+		indexs[nextIndex].style.background = 'blue';
+		lis[nextIndex].className = 'showright';
+		lis[preIndex].className = 'show';
+		preIndex --;
+	});
+
+	rightBtn.addEventListener('click', setInt);
+
+
+
+	// index.onmouseenter = function () {
+	// 	clearInterval(setIntFun);
+	// };
+	// index.onmouseleave = function () {
+	// 	setIntFun = setInterval(setInt, 3000);
+	// };
+
+
+
+	
+</script>
+
+</body>
+</html>
