@@ -1,285 +1,310 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset='utf-8'>
-	<title>rotate</title>
-	<style>
-	* {
-		padding: 0;
-		margin: 0;
-	}
-	li {
-		list-style: none;
-	}
-	.first-rotate {
-		margin: 0 auto;
-		position: relative;
-		width: 800px;
-		height: 400px;
-	}
-	.images {
-		position: relative;
-		width: 800px;
-		height: 400px;
-		overflow: hidden;
-	}
-	.images li {
-		position: absolute;
-		width: 800px;
-		height: 400px;
-	}
-	.images img {
-		width: 800px;
-		height: 400px;
-	}
-	
-	.none {
-		z-index: -1;
-	}
-	.showright {
-		animation: toright 0.5s;
-		z-index: 2;
-	}
-	@keyframes toright {
-		from { left: 800px; }
-		to { left: 0; }
-	}
-	.showleft {
-		animation: toleft 0.5s;
-		z-index: 2;
-	}
-	@keyframes toleft {
-		from { left: -800px; }
-		to { left: 0; }
-	}
-	.show {
-		z-index: 1;
-	}
-	.index {
-		position: absolute;
-		top: 360px;
-		left: 0;
-		right: 0;
-		margin: auto;
-		width: 250px;
-		height: 20px;
-		cursor: pointer;
-		z-index: 3;
-	}
-	.index-li {
-		float: left;
-		margin: 0 15px;
-		width: 20px;
-		height: 20px;
-		border-radius: 50%;
-		background: #B3B3B9;
-		transition: all 1s;
-		text-align: center;
-	}
-	.index .first {
-		background-color: #22A9FF;
-	}
-	.hand {
-		display: none;
-		position: absolute;
-		top: 40%;
-		width: 70px;
-		height: 70px;
-		background: url(./images/hand.png) no-repeat;
-		z-index: 3;
-		border-radius: 50%;
-		cursor: pointer;
-	}
-	.righthand {
-		right: 0;
-		background-position: 0 -70px;
-	}
-	</style>
+    <meta charset='utf-8'>
+    <title>rotate</title>
+    <style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    li {
+        list-style: none;
+    }
+    
+    .first-rotate {
+        margin: 0 auto;
+        position: relative;
+        width: 800px;
+        height: 400px;
+    }
+    
+    .images {
+        position: relative;
+        width: 800px;
+        height: 400px;
+        overflow: hidden;
+    }
+    
+    .images li {
+        position: absolute;
+        width: 800px;
+        height: 400px;
+    }
+    
+    .images img {
+        width: 800px;
+        height: 400px;
+    }
+    
+    .none {
+        z-index: -1;
+    }
+    
+    .showright {
+        animation: toright 0.5s;
+        z-index: 2;
+    }
+    
+    @keyframes toright {
+        from {
+            left: 800px;
+        }
+        to {
+            left: 0;
+        }
+    }
+    
+    .showleft {
+        animation: toleft 0.5s;
+        z-index: 2;
+    }
+    
+    @keyframes toleft {
+        from {
+            left: -800px;
+        }
+        to {
+            left: 0;
+        }
+    }
+    
+    .show {
+        z-index: 1;
+    }
+    
+    .index {
+        position: absolute;
+        top: 360px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 250px;
+        height: 20px;
+        cursor: pointer;
+        z-index: 3;
+    }
+    
+    .index-li {
+        float: left;
+        margin: 0 15px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #B3B3B9;
+        transition: all 1s;
+        text-align: center;
+    }
+    
+    .index .first {
+        background-color: #22A9FF;
+    }
+    
+    .hand {
+        display: none;
+        position: absolute;
+        top: 40%;
+        width: 70px;
+        height: 70px;
+        background: url(./images/hand.png) no-repeat;
+        z-index: 3;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    
+    .righthand {
+        right: 0;
+        background-position: 0 -70px;
+    }
+    </style>
 </head>
+
 <body>
-		<div class="first-rotate">
-			<ul class="images">
-				<div class="lefthand hand"></div>
-				<div class="righthand hand"></div>
-				<li class="showright"><img src="images/1.jpg"></li>
-				<li class="none"><img src="images/2.jpg"></li>
-				<li class="none"><img src="images/3.jpg"></li>
-				<li class="none"><img src="images/4.jpg"></li>
-				<li class="none"><img src="images/5.jpg"></li>
-			</ul>
-			<ul class="index">
-				<li class="index-li first">1</li>
-				<li class="index-li">2</li>
-				<li class="index-li">3</li>
-				<li class="index-li">4</li>
-				<li class="index-li">5</li>
-			</ul>
-		</div>
+    <div class="first-rotate">
+        <ul class="images">
+            <div class="lefthand hand"></div>
+            <div class="righthand hand"></div>
+            <li class="showright"><img src="images/1.jpg"></li>
+            <li class="none"><img src="images/2.jpg"></li>
+            <li class="none"><img src="images/3.jpg"></li>
+            <li class="none"><img src="images/4.jpg"></li>
+            <li class="none"><img src="images/5.jpg"></li>
+        </ul>
+        <ul class="index">
+            <li class="index-li first">1</li>
+            <li class="index-li">2</li>
+            <li class="index-li">3</li>
+            <li class="index-li">4</li>
+            <li class="index-li">5</li>
+        </ul>
+    </div>
+    <script>
+    var rotateImg = {
+        imgCon: 'images',
+        pointCon: 'index',
+        lefthand: 'lefthand',
+        righthand: 'righthand'
+    };
 
-<script>
+    rotate(rotateImg);
 
-var rotateImg = {
-	imgCon: 'images',
-	pointCon: 'index',
-	lefthand: 'lefthand',
-	righthand: 'righthand'
-};
+    function rotate(rotateObj) {
 
-rotate (rotateImg);
+        var lis = document.querySelectorAll('.' + rotateObj.imgCon + ' li'); //图片中的 li空格不能删
+        var imgCon = document.querySelector('.' + rotateObj.imgCon); //图片 ul
 
-function rotate (rotateObj) {
+        var indexs = document.querySelectorAll('.' + rotateObj.pointCon + ' li'); // 下面的 li空格不能删
+        var index = document.querySelector('.' + rotateObj.pointCon); // 下面的 ul
 
-	var lis = document.querySelectorAll('.' + rotateObj.imgCon + ' li'); //图片中的 li空格不能删
-	var imgCon = document.querySelector('.' + rotateObj.imgCon); //图片 ul
+        var leftBtn = document.querySelector('.' + rotateObj.lefthand);
+        var rightBtn = document.querySelector('.' + rotateObj.righthand);
 
-	var indexs = document.querySelectorAll('.' + rotateObj.pointCon + ' li'); // 下面的 li空格不能删
-	var index = document.querySelector('.' + rotateObj.pointCon); // 下面的 ul
+        var lisLen = lis.length,
+            indexsLen = indexs.length;
+        var nextIndex = 0,
+            preIndex = 0;
 
-	var leftBtn = document.querySelector('.' + rotateObj.lefthand);
-	var rightBtn = document.querySelector('.' + rotateObj.righthand);
+        indexs = Array.prototype.slice.call(indexs);
 
-	var lisLen = lis.length, indexsLen = indexs.length;
-	var nextIndex = 0, preIndex = 0;
+        if (index) {
+            //根据光标获得 index.
+            index.addEventListener('click', function(ev) {
+                var target = ev.target;
+                //获得 index.
+                if (target.tagName.toUpperCase() == 'LI') {
+                    // 获得前一个的 index.
+                    for (var i = 0; i < lisLen; i++) {
+                        if (lis[i].className == 'showleft' || lis[i].className == 'showright') {
+                            preIndex = i;
+                        }
+                    };
+                    // 获得后一个的 index.
+                    nextIndex = indexs.indexOf(target);
 
-	indexs =  Array.prototype.slice.call(indexs);
+                    if (lis[nextIndex].className != 'showleft' && lis[nextIndex].className != 'showright') {
+                        setImgIndex(preIndex, nextIndex);
+                    }
+                }
+            });
+            changeStyle(index, 'mouseover', function() {
+                clearInterval(setIntFun);
+            });
+            changeStyle(index, 'mouseover', function() {
+                setIntFun = setInterval(setInt, 2000);
+            });
+        }
 
-	if (index) {
-		//根据光标获得 index.
-		index.addEventListener('click', function (ev) {
-			var target = ev.target;	
-			//获得 index.
-			if (target.tagName.toUpperCase() == 'LI') {
-				// 获得前一个的 index.
-				for(var i = 0; i < lisLen; i ++) {
-					if (lis[i].className == 'showleft' || lis[i].className == 'showright') {
-						preIndex = i;
-					}
-				};
-				// 获得后一个的 index.
-				nextIndex = indexs.indexOf(target);
+        //重新设置lis 的 className 和 光标的 背景 
+        function reset() {
+            for (var i = 0; i < lisLen; i++) {
+                lis[i].className = 'none';
+            }
+            if (index) {
+                for (var j = 0; j < indexsLen; j++) {
+                    indexs[j].style.background = '#B3B3B9';
+                }
+            }
 
-				if (lis[nextIndex].className != 'showleft' && lis[nextIndex].className != 'showright') {
-					setImgIndex(preIndex, nextIndex);
-				}
-			}
-		});
-		changeStyle(index, 'mouseover', function () {
-			clearInterval(setIntFun);
-		});
-		changeStyle(index, 'mouseover', function () {
-			setIntFun = setInterval(setInt, 2000);
-		});
-	}
-		
-	//重新设置lis 的 className 和 光标的 背景 
-	function reset () {
-		for (var i = 0; i < lisLen; i ++) {
-			lis[i].className = 'none';
-		}
-		if (index) {
-			for (var j = 0; j < indexsLen; j ++) {
-				indexs[j].style.background = '#B3B3B9';
-			}
-		}
-		
-	};
-	//设置下面光标轮播   获得当前的 index. 并判断前后大小
-	function setImgIndex(preIndex, nextIndex) {
-		reset();
+        };
+        //设置下面光标轮播   获得当前的 index. 并判断前后大小
+        function setImgIndex(preIndex, nextIndex) {
+            reset();
 
-		if (preIndex > nextIndex) {
-			lis[nextIndex].className = 'showleft';
-		} else if (preIndex < nextIndex) {
-			lis[nextIndex].className = 'showright';
-		}
-		if (index) {
-			indexs[nextIndex].style.background = '#22A9FF';
-		}
-		lis[preIndex].className = 'show';
-	}
-	//设置自动轮播
-	var setIntFun = setInterval(setInt, 2000);
+            if (preIndex > nextIndex) {
+                lis[nextIndex].className = 'showleft';
+            } else if (preIndex < nextIndex) {
+                lis[nextIndex].className = 'showright';
+            }
+            if (index) {
+                indexs[nextIndex].style.background = '#22A9FF';
+            }
+            lis[preIndex].className = 'show';
+        }
+        //设置自动轮播
+        var setIntFun = setInterval(setInt, 2000);
 
-	function setInt () {
-		reset();
+        function setInt() {
+            reset();
 
-		nextIndex ++;
-		preIndex = nextIndex - 1;
-		if (nextIndex == lisLen) {
-			nextIndex = 0;
-		}
-		if (preIndex == lisLen) {
-			preIndex = 0;
-		}
-		if (index) {
-			indexs[nextIndex].style.background = '#22A9FF';
-		}
-		lis[nextIndex].className = 'showright';
-		lis[preIndex].className = 'show';
-		preIndex ++;
-	};
+            nextIndex++;
+            preIndex = nextIndex - 1;
+            if (nextIndex == lisLen) {
+                nextIndex = 0;
+            }
+            if (preIndex == lisLen) {
+                preIndex = 0;
+            }
+            if (index) {
+                indexs[nextIndex].style.background = '#22A9FF';
+            }
+            lis[nextIndex].className = 'showright';
+            lis[preIndex].className = 'show';
+            preIndex++;
+        };
 
-	if (leftBtn && rightBtn) {
-		//给两个 btn 添加事件
-		leftBtn.addEventListener('click', function () {
-			reset();
-			if (nextIndex == 0) {
-				nextIndex = lisLen;
-			}
-			nextIndex --;
-			preIndex = nextIndex + 1;
-			//如果后一张为最后一张  前一张为0
-			if (nextIndex == lisLen - 1) {
-				preIndex = 0;
-			}
-			if (index) {
-				indexs[nextIndex].style.background = '#22A9FF';
-			}
-			
-			lis[nextIndex].className = 'showleft';
-			lis[preIndex].className = 'show';
-			preIndex --;
-		});
-		changeStyle(imgCon, 'mouseover', function () {
-			showBtn();
-			clearInterval(setIntFun);
-		});
-		changeStyle(imgCon, 'mouseout', function () {
-			hideBtn();
-			setIntFun = setInterval(setInt, 2000);
-		});
+        if (leftBtn && rightBtn) {
+            //给两个 btn 添加事件
+            leftBtn.addEventListener('click', function() {
+                reset();
+                if (nextIndex == 0) {
+                    nextIndex = lisLen;
+                }
+                nextIndex--;
+                preIndex = nextIndex + 1;
+                //如果后一张为最后一张  前一张为0
+                if (nextIndex == lisLen - 1) {
+                    preIndex = 0;
+                }
+                if (index) {
+                    indexs[nextIndex].style.background = '#22A9FF';
+                }
 
-		rightBtn.addEventListener('click', setInt, false);
+                lis[nextIndex].className = 'showleft';
+                lis[preIndex].className = 'show';
+                preIndex--;
+            });
+            changeStyle(imgCon, 'mouseover', function() {
+                showBtn();
+                clearInterval(setIntFun);
+            });
+            changeStyle(imgCon, 'mouseout', function() {
+                hideBtn();
+                setIntFun = setInterval(setInt, 2000);
+            });
 
-	}
-	// 添加 hover 显示左右 button 和 重设置自动轮播
-	function showBtn () {
-		leftBtn.style.display = 'block';
-		rightBtn.style.display = 'block';
-	}
-	function hideBtn () {
-		leftBtn.style.display = 'none';
-		rightBtn.style.display = 'none';
-	}
-	
-	function changeStyle (element, ev, callback, async) {
-		var async = async || false;
-		element.addEventListener (ev, function () {
-			callback();
-		})
-	}
+            rightBtn.addEventListener('click', setInt, false);
 
-	if (index && leftBtn && rightBtn) {
-		changeStyle(index, 'mouseover', function () {
-			showBtn();
-		});
-		changeStyle(index, 'mouseover', function () {
-			hideBtn();
-		});
-	}
-};
+        }
+        // 添加 hover 显示左右 button 和 重设置自动轮播
+        function showBtn() {
+            leftBtn.style.display = 'block';
+            rightBtn.style.display = 'block';
+        }
 
-</script>
+        function hideBtn() {
+            leftBtn.style.display = 'none';
+            rightBtn.style.display = 'none';
+        }
 
+        function changeStyle(element, ev, callback, async) {
+            var async = async || false;
+            element.addEventListener(ev, function() {
+                callback();
+            })
+        }
+
+        if (index && leftBtn && rightBtn) {
+            changeStyle(index, 'mouseover', function() {
+                showBtn();
+            });
+            changeStyle(index, 'mouseover', function() {
+                hideBtn();
+            });
+        }
+    };
+    </script>
 </body>
+
 </html>
